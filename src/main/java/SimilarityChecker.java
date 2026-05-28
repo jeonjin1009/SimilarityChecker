@@ -1,5 +1,5 @@
 public class SimilarityChecker {
-    public Float check(String String1, String String2) {
+    public Float lengthCheck(String String1, String String2) {
         checkException(String1, String2);
 
         float LengthSimilarity;

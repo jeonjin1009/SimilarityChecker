@@ -19,7 +19,7 @@ class SimilarityCheckerTest {
 
     private void checkInvalid(String value) {
         try {
-            similarityChecker.check(null, null);
+            similarityChecker.lengthCheck(null, null);
             fail();
         }catch (IllegalArgumentException e ){
 
@@ -28,6 +28,6 @@ class SimilarityCheckerTest {
 
     @Test
     void testLengthSimilarity() {
-        assertEquals(60, similarityChecker.check("ABC", "ABC"));
+        assertEquals(60, similarityChecker.lengthCheck("ABC", "ABC"));
     }
 }
