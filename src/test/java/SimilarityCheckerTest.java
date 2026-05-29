@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SimilarityCheckerTest {
 
     SimilarityChecker similarityChecker;
+
     @BeforeEach
     void setUp() {
         similarityChecker = new SimilarityChecker();
@@ -13,22 +14,13 @@ class SimilarityCheckerTest {
 
     @Test
     void inputInvalid() {
-        checkInvalid(null);
-        checkInvalid("1AB");
-    }
-
-    private void checkInvalid(String value) {
-        try {
-            similarityChecker.alphaCheck(null, null);
-            fail();
-        }catch (IllegalArgumentException e ){
-
-        }
+        assertThrows(IllegalArgumentException.class, () -> similarityChecker.check(null, null));
+        assertThrows(IllegalArgumentException.class, () -> similarityChecker.check("1AB", "ABC"));
     }
 
     @Test
-    void testAlphaChecker() {
-
-        assertEquals(30, similarityChecker.alphaCheck("ABCD","ABC"));
+    void testCheck() {
+        // alphaCheck("ABCD","ABC") = 30, lengthCheck("ABCD","ABC") = 40 → 합계 70
+        assertEquals(70, similarityChecker.check("ABCD", "ABC"));
     }
 }
